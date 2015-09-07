@@ -2,14 +2,17 @@ package tw.monsta.tdd91.day1;
 
 import org.junit.Before;
 import org.junit.Test;
+import tw.monsta.tdd91.day1.object.Order;
+import tw.monsta.tdd91.day1.object.OrderField;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tw.monsta.tdd91.day1.Order.build;
+import static tw.monsta.tdd91.day1.object.Order.build;
 
 /**
  * Created by johnson on 15/9/7.
+ * This is the main test class.
  */
 public class TestOrderInfoAnalyzer {
 

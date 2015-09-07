@@ -1,4 +1,4 @@
-package tw.monsta.tdd91.day1;
+package tw.monsta.tdd91.day1.object;
 
 import org.junit.Test;
 

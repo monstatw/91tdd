@@ -1,10 +1,14 @@
 package tw.monsta.tdd91.day1;
 
+import tw.monsta.tdd91.day1.object.Order;
+import tw.monsta.tdd91.day1.object.OrderField;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by johnson on 15/9/7.
+ * This is the main application.
  */
 public class OrderInfoAnalyzer {
 
@@ -18,7 +22,7 @@ public class OrderInfoAnalyzer {
      * 以groupCount個Order為一組，計算cost的總和
      *
      * @param groupCount 幾個為一組
-     * @param fieldType 取Order哪一個欄位
+     * @param fieldType  取Order哪一個欄位
      * @return grouping後加總的結果
      */
     public Integer[] groupingFieldSum(int groupCount, OrderField fieldType) {
