@@ -3,12 +3,10 @@ package tw.monsta.tdd91.day1;
 import org.junit.Before;
 import org.junit.Test;
 import tw.monsta.tdd91.day1.object.Order;
-import tw.monsta.tdd91.day1.object.OrderField;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tw.monsta.tdd91.day1.object.Order.build;
 
 /**
  * Created by johnson on 15/9/7.
@@ -21,31 +19,38 @@ public class TestOrderInfoAnalyzer {
     @Before
     public void setUp() {
         orders = Arrays.asList(
-                build(1, 1, 11, 21), build(2, 2, 12, 22), build(3, 3, 13, 23),
-                build(4, 4, 14, 24), build(5, 5, 15, 25), build(6, 6, 16, 26),
-                build(7, 7, 17, 27), build(8, 8, 18, 28), build(9, 9, 19, 20),
-                build(10, 10, 20, 30), build(11, 11, 21, 31)
+                new Order.OrderBuilder().id(1).cost(1).revenue(11).sellPrice(21).build(),
+                new Order.OrderBuilder().id(2).cost(2).revenue(12).sellPrice(22).build(),
+                new Order.OrderBuilder().id(3).cost(3).revenue(13).sellPrice(23).build(),
+                new Order.OrderBuilder().id(4).cost(4).revenue(14).sellPrice(24).build(),
+                new Order.OrderBuilder().id(5).cost(5).revenue(15).sellPrice(25).build(),
+                new Order.OrderBuilder().id(6).cost(6).revenue(16).sellPrice(26).build(),
+                new Order.OrderBuilder().id(7).cost(7).revenue(17).sellPrice(27).build(),
+                new Order.OrderBuilder().id(8).cost(8).revenue(18).sellPrice(28).build(),
+                new Order.OrderBuilder().id(9).cost(9).revenue(19).sellPrice(20).build(),
+                new Order.OrderBuilder().id(10).cost(10).revenue(20).sellPrice(30).build(),
+                new Order.OrderBuilder().id(11).cost(11).revenue(21).sellPrice(31).build()
         ).toArray(new Order[]{});
     }
 
     @Test
-    public void given_orders_groupingCost_in_3_shouldSuccess() {
+    public void given_orders_summing_cost_groupingIn_3_should_get_result_6_15_24_21() {
 //        arrange
         Integer[] expected = {6, 15, 24, 21};
         OrderInfoAnalyzer target = new OrderInfoAnalyzer(orders);
 //        act
-        Integer[] actual = target.groupingFieldSum(3, OrderField.COST);
+        Integer[] actual = target.sumFieldWithGroupingCount(3, Order::getCost);
 //        assert
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    public void given_orders_groupingRevenue_in_4_shouldSuccess() {
+    public void given_orders_sum_revenue_groupingIn_4_should_get_result_50_66_60() {
 //        arrange
         Integer[] expected = {50, 66, 60};
         OrderInfoAnalyzer target = new OrderInfoAnalyzer(orders);
 //        act
-        Integer[] actual = target.groupingFieldSum(4, OrderField.REVENUE);
+        Integer[] actual = target.sumFieldWithGroupingCount(4, Order::getRevenue);
 //        assert
         assertThat(actual).isEqualTo(expected);
     }

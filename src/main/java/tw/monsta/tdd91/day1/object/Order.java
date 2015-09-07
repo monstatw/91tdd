@@ -11,22 +11,15 @@ public class Order {
     private final int sellPrice;
 
     /**
-     * private constructor
+     * build Order by OrderBuilder
      *
-     * @param id
-     * @param cost
-     * @param revenue
-     * @param sellPrice
+     * @param builder
      */
-    private Order(int id, int cost, int revenue, int sellPrice) {
-        this.id = id;
-        this.cost = cost;
-        this.revenue = revenue;
-        this.sellPrice = sellPrice;
-    }
-
-    public static Order build(int id, int cost, int revenue, int sellPrice) {
-        return new Order(id, cost, revenue, sellPrice);
+    private Order(OrderBuilder builder) {
+        this.id = builder.id;
+        this.cost = builder.cost;
+        this.revenue = builder.revenue;
+        this.sellPrice = builder.sellPrice;
     }
 
     public int getCost() {
@@ -35,5 +28,37 @@ public class Order {
 
     public int getRevenue() {
         return this.revenue;
+    }
+
+    public static class OrderBuilder {
+
+        private int id;
+        private int cost;
+        private int revenue;
+        private int sellPrice;
+
+        public OrderBuilder id(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public OrderBuilder cost(int cost) {
+            this.cost = cost;
+            return this;
+        }
+
+        public OrderBuilder revenue(int revenue) {
+            this.revenue = revenue;
+            return this;
+        }
+
+        public OrderBuilder sellPrice(int sellPrice) {
+            this.sellPrice = sellPrice;
+            return this;
+        }
+
+        public Order build() {
+            return new Order(this);
+        }
     }
 }
