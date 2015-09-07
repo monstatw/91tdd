@@ -10,5 +10,5 @@ homework of 91 TDD class
 * coverage report would be in target/site/jacoco-ut/index.html
 
 ## 說明
-* 主要測試程式為[TestOrderInfoAnalyzer.java](src/main/test/tw/monsta/tdd91/day1/TestOrderInfoAnalyzer.java)
+* 主要測試程式為[TestOrderInfoAnalyzer.java](src/test/java/tw/monsta/tdd91/day1/TestOrderInfoAnalyzer.java)
 * production程式為[OrderInfoAnalyzer.java](src/main/java/tw/monsta/tdd91/day1/OrderInfoAnalyzer.java)
