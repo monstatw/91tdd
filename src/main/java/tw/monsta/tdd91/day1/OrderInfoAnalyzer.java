@@ -16,7 +16,7 @@ public class OrderInfoAnalyzer {
     private final Order[] orders;
 
     public OrderInfoAnalyzer(Order[] orders) {
-        this.orders = orders;
+        this.orders = Arrays.copyOf(orders, orders.length);
     }
 
     /**
