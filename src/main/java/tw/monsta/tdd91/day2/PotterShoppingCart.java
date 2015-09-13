@@ -20,16 +20,16 @@ public class PotterShoppingCart {
         long differentCount = suit.stream()
                 .filter(count -> count >= 1)
                 .count();
+        double discount = getDiscount(differentCount);
+
+        int suitTotal = (int) (100 * differentCount * (1 - discount));
 
         List<Integer> nextSuit = suit.stream()
                 .map(count -> count - 1)
                 .collect(Collectors.toList());
         boolean hasNextSuit = nextSuit.stream().anyMatch(count -> count >= 1);
 
-        double discount = getDiscount(differentCount);
-
-        int temp = (int) (100 * differentCount * (1 - discount));
-        return temp + (hasNextSuit ? calculateTotal(nextSuit) : 0);
+        return suitTotal + (hasNextSuit ? calculateTotal(nextSuit) : 0);
     }
 
     private double getDiscount(long differentCount) {
